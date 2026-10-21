@@ -1,0 +1,60 @@
+imports:
+    - { resource: config_images.yaml }
+    - { resource: config_localconfig.yaml }
+    - { resource: packages/monolog.yaml }
+
+contao:
+    backend:
+        badge_title: '%env(BADGE_TITLE)%'
+        attributes:
+            app-name: 'be-styles be-status--%env(BE_STATUS)%' # switches just attributes, used for styling
+        custom_css:
+            - files/layout/css/backend.css
+        # custom_js:
+        #   - files/theme/backend.js
+        # route_prefix: /admin
+
+    backup:
+        ignore_tables:
+            - tl_crawl_queue
+            - tl_log
+            - tl_search
+            - tl_search_index
+            - tl_search_term
+            # + eigene statische Tabellen
+        keep_max: 3 # Standard: 5
+
+    mailer:
+        transports:
+            website1: ~
+            website2:
+                from: versand@website2.de
+
+    # Kleine Helfer (Werte = Standard)
+    registration:
+        expiration: 14 # Tage
+    pagination:
+        default_range: 7
+    sanitizer:
+        allowed_url_protocols: # ersetzt den Standard, ergänzt ihn nicht
+            - http
+            - https
+            - ftp
+            - mailto
+            - tel
+            - data
+            - skype
+            - whatsapp
+            # - customprotocol
+    altcha:
+        algorithm: SHA-256
+        range_max: 100000
+        challenge_expiry: 86400 # 24 h
+
+framework:
+    mailer:
+        transports:
+            website1: '%env(WEBSITE_SMTP)%'
+            website2: '%env(WEBSITE_SMTP2)%'
+    assets:
+        #json_manifest_path: '%kernel.project_dir%/public/layout/manifest.json'

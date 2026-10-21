@@ -1,0 +1,7 @@
+monolog:
+    handlers:
+        php_warnings:
+            type: stream
+            # Logs are located in var/logs/php_warnings.log
+            path: '%kernel.logs_dir%/php_warnings.log'
+            level: warning

@@ -1,0 +1,10 @@
+imports:
+    - { resource: config.yaml }
+
+contao:
+    error_level: 8181 # ohne Warnungen
+
+# Alternative zu DNS_MAPPING in der .env.local (überschreibt sie):
+# parameters:
+#     contao.dns_mapping:
+#         www.kunde.de: kunde.ddev.site

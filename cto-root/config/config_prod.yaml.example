@@ -1,0 +1,11 @@
+imports:
+    - { resource: config.yaml }
+
+contao:
+    security:
+        two_factor:
+            enforce_backend: true
+
+parameters:
+    contao.dns_mapping:
+        kunde.ddev.site: www.kunde.de

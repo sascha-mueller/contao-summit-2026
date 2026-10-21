@@ -1,0 +1,59 @@
+contao:
+    image:
+        imagine_options:
+            jpeg_quality: 90
+        sizes:
+            # responsive images
+            _defaults:
+                lazy_loading: true
+                formats:
+                    jpg: [ webp, jpg ]
+                    jpeg: [ webp, jpeg ]
+                    webp: [ webp, jpg ]
+                    png: [ webp, png ]
+                densities: 1.5x,2x
+
+            # Vollbreites Bühnenbild, auf Mobile höher zugeschnitten
+            hero_image:
+                width: 1920
+                height: 800
+                resize_mode: crop
+                items:
+                    - media: '(max-width: 767px)'
+                      width: 768
+                      height: 576
+                      resize_mode: proportional
+                    - media: '(max-width: 1199px)'
+                      width: 1200
+                      height: 600
+                      resize_mode: proportional
+
+            # Bild über die volle Inhaltsbreite, Seitenverhältnis bleibt erhalten
+            content_full_size:
+                width: 1400
+                resize_mode: proportional
+                items:
+                    - media: '(max-width: 767px)'
+                      width: 768
+                      resize_mode: proportional
+
+            # Halbe Inhaltsbreite (zweispaltig), auf Mobile volle Breite
+            content_half:
+                width: 600
+                resize_mode: proportional
+                items:
+                    - media: '(max-width: 767px)'
+                      width: 768
+                      resize_mode: proportional
+
+            # Teaser-Kacheln, einheitlich 3:2 zugeschnitten
+            teaser:
+                width: 600
+                height: 400
+                resize_mode: crop
+
+            # Hochformat 3:4, nur für Erweiterung – in Benutzergruppen NICHT freigeben
+            be_portrait:
+                width: 480
+                height: 640
+                resize_mode: crop

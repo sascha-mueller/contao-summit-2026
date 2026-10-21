@@ -1,0 +1,45 @@
+/** Additional Backend CSS Sstyles
+  */
+
+:root {
+    --c-bage-title--bg-prod: #c60129;
+    --c-bage-title--bg-stage: #FACC15;
+    --c-bage-title--txt-stage: #1F1A00;
+}
+
+[data-app-name*=be-styles]  {
+    /** BACKEND */
+    #home {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .badge-title {
+        margin: 0;
+        padding: 6px 10px;
+
+        text-transform: uppercase;
+
+        border-radius: 8px;
+    }
+
+    /** LOGIN */
+    .tl_login_form {
+        .badge-title {
+            margin-top: -6px;
+        }
+    }
+}
+
+/** STATUS */
+/* dev uses contao default colors for the badge-title */
+
+[data-app-name*=--prod] .badge-title {
+    --invert-bg: var(--c-bage-title--bg-prod);
+}
+
+[data-app-name*=--stage] .badge-title {
+    --invert-bg: var(--c-bage-title--bg-stage);
+    --invert-text: var(--c-bage-title--txt-stage);
+}
